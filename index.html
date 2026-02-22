@@ -3,227 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esperanza Violeta | Red de Protección</title>
+    <title>Esperanza Violeta | Ecosistema de Protección</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        :root { --violeta: #8e44ad; --fondo: #fcfaff; }
+        :root { --violeta: #8e44ad; --fondo: #f8faff; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--fondo); color: #1a1a1a; }
-        .tab-content { display: none; }
+        .tab-content { display: none; padding-bottom: 100px; }
         .active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-active { color: var(--violeta); font-weight: 800; transform: scale(1.1); }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
-        .sede-card { transition: all 0.3s ease; border: 1px solid #eee; }
-        .sede-card:hover { border-color: var(--violeta); transform: translateY(-2px); shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .nav-active { color: var(--violeta) !important; font-weight: 800; transform: translateY(-5px); }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .card-violet { background: white; border-radius: 2rem; border: 1px solid #f0e7ff; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .btn-grad { background: linear-gradient(135deg, #8e44ad 0%, #6366f1 100%); color: white; }
     </style>
 </head>
-<body class="pb-32">
+<body class="overflow-x-hidden">
 
-    <header class="bg-[#8e44ad] text-white p-6 pb-12 rounded-b-[40px] shadow-2xl relative overflow-hidden">
-        <div class="relative z-10 flex justify-between items-center">
+    <header class="bg-[#8e44ad] text-white p-6 pb-12 rounded-b-[40px] shadow-2xl relative z-50">
+        <div class="flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-black italic tracking-tighter">ESPERANZA VIOLETA</h1>
-                <p id="location-status" class="text-[10px] font-bold opacity-80 uppercase">Venezuela • Conectada</p>
+                <h1 class="text-xl font-black italic tracking-tighter uppercase">Esperanza Violeta</h1>
+                <p id="location-status" class="text-[9px] font-bold opacity-80 uppercase tracking-widest">Venezuela • Panel de Control</p>
             </div>
-            <button onclick="detectarUbicacion()" class="bg-white/20 p-3 rounded-2xl backdrop-blur-md hover:bg-white/30 transition">
-                <i class="fas fa-location-arrow"></i>
-            </button>
+            <div class="flex gap-2">
+                <button onclick="detectarUbicacion()" class="bg-white/20 p-3 rounded-xl backdrop-blur-md"><i class="fas fa-location-arrow"></i></button>
+            </div>
         </div>
     </header>
 
-    <main class="px-4 -mt-6">
+    <main class="px-4 -mt-6 relative z-10">
 
         <div id="home" class="tab-content active space-y-6">
-            <div class="bg-white p-6 rounded-[2rem] shadow-xl border-b-4 border-red-500">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-red-600 font-black text-xs uppercase tracking-widest">Línea de Vida</span>
-                    <span class="flex h-2 w-2 rounded-full bg-red-500 animate-ping"></span>
-                </div>
-                <a href="tel:911" class="w-full bg-red-600 text-white py-5 rounded-2xl flex items-center justify-center gap-4 text-3xl font-black shadow-lg active:scale-95 transition">
-                    <i class="fas fa-shield-alt"></i> SOS 911
+            <div class="card-violet p-6 border-b-4 border-red-500">
+                <a href="tel:911" class="w-full btn-grad py-5 rounded-3xl flex items-center justify-center gap-4 text-3xl font-black shadow-lg">
+                    <i class="fas fa-phone-alt animate-bounce"></i> SOS 911
                 </a>
             </div>
 
-            <div class="bg-white p-6 rounded-[2rem] shadow-lg border border-green-100">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="h-12 w-12 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-md">
-                        <i class="fab fa-whatsapp"></i>
+            <div onclick="showTab('v-metro')" class="card-violet p-5 flex items-center gap-4 bg-gradient-to-r from-orange-50 to-red-50 border-orange-200 border cursor-pointer">
+                <div class="text-3xl text-orange-500"><i class="fas fa-thermometer-half"></i></div>
+                <div>
+                    <h4 class="font-black text-xs text-orange-800 uppercase">Violentómetro</h4>
+                    <p class="text-[10px] text-orange-600 font-bold">Mide tu situación actual aquí</p>
+                </div>
+                <i class="fas fa-chevron-right ml-auto text-orange-300"></i>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <div onclick="showTab('news')" class="card-violet p-5 flex flex-col items-center gap-2">
+                    <i class="fas fa-newspaper text-purple-600 text-xl"></i>
+                    <span class="text-[10px] font-black uppercase">Noticias</span>
+                </div>
+                <div onclick="showTab('recursos')" class="card-violet p-5 flex flex-col items-center gap-2">
+                    <i class="fas fa-book-open text-indigo-600 text-xl"></i>
+                    <span class="text-[10px] font-black uppercase">Recursos</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="news" class="tab-content space-y-4">
+            <h2 class="text-xl font-black text-purple-900 px-2 italic">Actualidad Violeta</h2>
+            <div class="space-y-4">
+                <div class="card-violet overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573163231162-735552949222?auto=format&fit=crop&q=80&w=400" class="w-full h-32 object-cover">
+                    <div class="p-4">
+                        <span class="text-[8px] font-bold text-purple-600 uppercase">Venezuela 2026</span>
+                        <h4 class="font-bold text-sm mt-1 leading-tight">Nuevas Fiscalías Especializadas se inauguran en el Occidente del país.</h4>
+                        <p class="text-[10px] text-gray-500 mt-2">Se fortalece la atención en Zulia y Falcón con personal capacitado en enfoque de género.</p>
                     </div>
+                </div>
+                <div class="card-violet p-4 border-l-4 border-indigo-500">
+                    <h4 class="font-bold text-sm">Estudio: Autonomía financiera reduce riesgo en un 60%</h4>
+                    <p class="text-[10px] text-gray-500 mt-1">Nuevas cifras indican que la formación técnica es clave para romper ciclos de violencia.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="recursos" class="tab-content space-y-4">
+            <h2 class="text-xl font-black text-purple-900 px-2 italic">Conocimiento es Poder</h2>
+            <div class="grid grid-cols-1 gap-3">
+                <div class="card-violet p-5 border-l-4 border-purple-500">
+                    <h4 class="font-black text-xs uppercase mb-2">1. Violencia Psicológica</h4>
+                    <p class="text-[10px] text-gray-600">Celos excesivos, insultos, control de amistades y humillaciones. Es el inicio del ciclo.</p>
+                </div>
+                <div class="card-violet p-5 border-l-4 border-indigo-500">
+                    <h4 class="font-black text-xs uppercase mb-2">2. Violencia Patrimonial</h4>
+                    <p class="text-[10px] text-gray-600">Cuando te quita el sueldo, destruye tus documentos o rompe tus objetos personales.</p>
+                </div>
+                <div class="card-violet p-5 border-l-4 border-pink-500">
+                    <h4 class="font-black text-xs uppercase mb-2">Tips de Seguridad</h4>
+                    <ul class="text-[10px] text-gray-600 space-y-2 mt-2">
+                        <li>• Mantén tus documentos en un lugar secreto o digitalizados.</li>
+                        <li>• Establece una "Palabra Clave" con una vecina en caso de emergencia.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="cursos" class="tab-content space-y-4">
+            <h2 class="text-xl font-black text-purple-900 px-2 italic">Hacia tu Libertad</h2>
+            <div class="card-violet p-5 bg-indigo-600 text-white">
+                <h4 class="font-black text-sm uppercase">Cursos Gratuitos</h4>
+                <p class="text-[10px] opacity-80 mt-1 font-medium">Habilidades para independizarte económicamente.</p>
+            </div>
+            <div class="space-y-3">
+                <div class="card-violet p-4 flex justify-between items-center">
                     <div>
-                        <h3 class="font-extrabold text-gray-800 leading-none">Comunidad Real</h3>
-                        <p class="text-[10px] text-green-600 font-bold mt-1">GRUPO DE APOYO ACTIVO</p>
+                        <h4 class="font-bold text-xs">Gestión de Emprendimientos Online</h4>
+                        <p class="text-[9px] text-gray-400">Marketing y ventas por redes sociales</p>
                     </div>
+                    <button class="bg-purple-100 text-purple-600 p-2 px-4 rounded-xl text-[10px] font-black uppercase">Ver</button>
                 </div>
-                <a href="https://chat.whatsapp.com/Edpuftg89zoDDHTBiMPabI" target="_blank" class="block w-full bg-green-600 text-white text-center py-4 rounded-2xl font-black shadow-lg">
-                    UNIRME AHORA
-                </a>
+                <div class="card-violet p-4 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-xs">Asistente Administrativo Digital</h4>
+                        <p class="text-[9px] text-gray-400">Excel y herramientas de oficina</p>
+                    </div>
+                    <button class="bg-purple-100 text-purple-600 p-2 px-4 rounded-xl text-[10px] font-black uppercase">Ver</button>
+                </div>
+                <div class="card-violet p-4 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-xs">Repostería y Cocina Comercial</h4>
+                        <p class="text-[9px] text-gray-400">Genera ingresos desde casa</p>
+                    </div>
+                    <button class="bg-purple-100 text-purple-600 p-2 px-4 rounded-xl text-[10px] font-black uppercase">Ver</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="v-metro" class="tab-content space-y-4">
+            <h2 class="text-xl font-black text-red-900 px-2 italic uppercase">Violentómetro</h2>
+            <p class="text-[10px] px-2 font-bold text-gray-500 uppercase">Marca lo que estás viviendo para recibir ayuda:</p>
+            
+            <div class="space-y-2">
+                <button onclick="checkV(1)" class="w-full p-4 bg-yellow-50 text-yellow-800 rounded-2xl text-[11px] font-bold text-left border border-yellow-100">Bromas hirientes, chantajes, mentiras.</button>
+                <button onclick="checkV(2)" class="w-full p-4 bg-orange-50 text-orange-800 rounded-2xl text-[11px] font-bold text-left border border-orange-100">Amenazas, prohibiciones, destrucción de objetos.</button>
+                <button onclick="checkV(3)" class="w-full p-4 bg-red-100 text-red-800 rounded-2xl text-[11px] font-bold text-left border border-red-200">Golpes, empujones, amenazas de muerte.</button>
             </div>
 
-            <div class="grid grid-cols-2 gap-4">
-                <div onclick="showTab('sedes')" class="bg-white p-6 rounded-[2rem] shadow-sm flex flex-col items-center border border-purple-50">
-                    <i class="fas fa-map-marked-alt text-2xl text-purple-600 mb-2"></i>
-                    <span class="text-[10px] font-black uppercase">Sedes</span>
-                </div>
-                <div onclick="showTab('ia')" class="bg-white p-6 rounded-[2rem] shadow-sm flex flex-col items-center border border-indigo-50">
-                    <i class="fas fa-robot text-2xl text-indigo-600 mb-2"></i>
-                    <span class="text-[10px] font-black uppercase">Hablar con IA</span>
+            <div id="v-result" class="card-violet p-6 mt-4 hidden bg-white">
+                <h4 id="v-title" class="font-black text-sm uppercase"></h4>
+                <p id="v-desc" class="text-[11px] mt-2 text-gray-600 leading-relaxed"></p>
+                <div class="flex gap-2 mt-4">
+                    <button onclick="showTab('ia')" class="btn-grad text-[10px] font-black p-3 rounded-xl flex-1 uppercase">Hablar con Violeta</button>
+                    <button onclick="showTab('sedes')" class="bg-gray-100 text-gray-600 text-[10px] font-black p-3 rounded-xl flex-1 uppercase">Ver Fiscalía</button>
                 </div>
             </div>
         </div>
 
         <div id="sedes" class="tab-content space-y-4">
-            <h2 class="text-xl font-black text-purple-900 px-2">Encuentra Ayuda</h2>
-            
-            <div class="space-y-2 px-1">
-                <div class="flex gap-2">
-                    <select id="filtroEstado" onchange="filtrarSedes()" class="flex-1 p-4 rounded-2xl bg-white shadow-sm text-xs font-bold border-none outline-none text-purple-700">
-                        <option value="todos">Todos los Estados</option>
-                        <option value="Amazonas">Amazonas</option>
-                        <option value="Anzoátegui">Anzoátegui</option>
-                        <option value="Apure">Apure</option>
-                        <option value="Aragua">Aragua</option>
-                        <option value="Barinas">Barinas</option>
-                        <option value="Bolívar">Bolívar</option>
-                        <option value="Carabobo">Carabobo</option>
-                        <option value="Cojedes">Cojedes</option>
-                        <option value="Delta Amacuro">Delta Amacuro</option>
-                        <option value="Distrito Capital">Distrito Capital</option>
-                        <option value="Falcón">Falcón</option>
-                        <option value="Guárico">Guárico</option>
-                        <option value="Lara">Lara</option>
-                        <option value="Mérida">Mérida</option>
-                        <option value="Miranda">Miranda</option>
-                        <option value="Monagas">Monagas</option>
-                        <option value="Nueva Esparta">Nueva Esparta</option>
-                        <option value="Portuguesa">Portuguesa</option>
-                        <option value="Sucre">Sucre</option>
-                        <option value="Táchira">Táchira</option>
-                        <option value="Trujillo">Trujillo</option>
-                        <option value="Vargas">Vargas</option>
-                        <option value="Yaracuy">Yaracuy</option>
-                        <option value="Zulia">Zulia</option>
-                    </select>
-                </div>
-                <input type="text" id="busquedaCiudad" onkeyup="filtrarSedes()" placeholder="Escribe tu ciudad (ej: Maracay)..." class="w-full p-4 rounded-2xl bg-white shadow-sm text-xs border-none outline-none">
-            </div>
-
-            <div id="lista-sedes" class="space-y-4 pb-10">
-                </div>
+            <h2 class="text-xl font-black text-purple-900 px-2">Sedes</h2>
+            <select id="filtroEstado" onchange="filtrarSedes()" class="w-full p-4 rounded-2xl bg-white shadow-sm text-xs font-bold border-none outline-none text-purple-700">
+                <option value="todos">Todos los Estados</option>
+                <option value="Distrito Capital">Distrito Capital</option>
+                <option value="Aragua">Aragua</option>
+                <option value="Zulia">Zulia</option>
+                <option value="Carabobo">Carabobo</option>
+            </select>
+            <div id="lista-sedes" class="space-y-4"></div>
         </div>
 
         <div id="ia" class="tab-content space-y-4">
-            <div class="bg-white rounded-[2.5rem] shadow-2xl h-[550px] flex flex-col overflow-hidden border">
-                <div class="bg-gradient-to-r from-purple-700 to-indigo-600 p-5 text-white">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shadow-inner"><i class="fas fa-robot"></i></div>
-                        <div>
-                            <h4 class="font-black text-xs tracking-widest uppercase">Violeta IA</h4>
-                            <p class="text-[8px] opacity-70">Asesoría Legal y Psicológica 24/7</p>
-                        </div>
-                    </div>
+            <div class="bg-white rounded-[2.5rem] shadow-2xl h-[500px] flex flex-col overflow-hidden">
+                <div class="bg-[#8e44ad] p-5 text-white flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center"><i class="fas fa-robot"></i></div>
+                    <div><h4 class="font-black text-xs uppercase">Violeta IA</h4><p class="text-[8px] opacity-70">Experta en Género</p></div>
                 </div>
-                <div id="chatBox" class="flex-1 p-5 overflow-y-auto space-y-4 text-xs font-medium bg-[#fcfaff]">
-                    <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-purple-50 leading-relaxed text-gray-700">
-                        Hola, valiente. Soy Violeta. Estoy aquí para escucharte y darte una ruta clara. 
-                        <b>¿Sientes que estás en riesgo hoy?</b> Puedo explicarte cómo denunciar o darte ejercicios para calmar la ansiedad.
-                    </div>
-                </div>
+                <div id="chatBox" class="flex-1 p-5 overflow-y-auto space-y-4 text-[11px] bg-slate-50"></div>
                 <div class="p-4 bg-white border-t flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Escribe aquí tu duda..." class="flex-1 bg-gray-50 p-4 rounded-2xl text-xs outline-none focus:ring-2 focus:ring-purple-400 border-none transition-all">
-                    <button onclick="sendChat()" class="bg-purple-600 text-white w-14 h-14 rounded-2xl shadow-lg active:scale-90 transition"><i class="fas fa-paper-plane"></i></button>
+                    <input type="text" id="chatInput" placeholder="Describe tu situación..." class="flex-1 bg-gray-50 p-4 rounded-2xl text-xs outline-none">
+                    <button onclick="sendChat()" class="bg-purple-600 text-white w-12 h-12 rounded-2xl"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <nav class="fixed bottom-0 w-full bg-white/90 backdrop-blur-xl flex justify-around p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.08)] border-t border-gray-100 z-50 rounded-t-[30px]">
-        <button onclick="showTab('home')" class="nav-btn flex flex-col items-center text-gray-300 active-nav">
-            <i class="fas fa-home text-xl"></i>
-            <span class="text-[9px] font-black mt-1 uppercase">Inicio</span>
+    <nav class="fixed bottom-0 w-full glass flex justify-around p-4 shadow-2xl border-t border-gray-100 z-[100] rounded-t-[30px]">
+        <button onclick="showTab('home')" class="nav-btn flex flex-col items-center text-gray-400 nav-active">
+            <i class="fas fa-home text-lg"></i><span class="text-[8px] font-black mt-1 uppercase">Inicio</span>
         </button>
-        <button onclick="showTab('sedes')" class="nav-btn flex flex-col items-center text-gray-300">
-            <i class="fas fa-map-marked-alt text-xl"></i>
-            <span class="text-[9px] font-black mt-1 uppercase">Sedes</span>
+        <button onclick="showTab('cursos')" class="nav-btn flex flex-col items-center text-gray-400">
+            <i class="fas fa-graduation-cap text-lg"></i><span class="text-[8px] font-black mt-1 uppercase">Academia</span>
         </button>
-        <button onclick="showTab('ia')" class="nav-btn flex flex-col items-center text-gray-300">
-            <i class="fas fa-comment-dots text-xl"></i>
-            <span class="text-[9px] font-black mt-1 uppercase">Violeta</span>
+        <button onclick="showTab('ia')" class="nav-btn flex flex-col items-center text-gray-400">
+            <i class="fas fa-robot text-lg"></i><span class="text-[8px] font-black mt-1 uppercase">Violeta</span>
         </button>
-        <button onclick="window.location.href='https://www.google.com/search?q=noticias+clima+venezuela'" class="flex flex-col items-center text-red-300">
-            <i class="fas fa-times-circle text-xl"></i>
-            <span class="text-[9px] font-black mt-1 uppercase">Salir</span>
+        <button onclick="showTab('sedes')" class="nav-btn flex flex-col items-center text-gray-400">
+            <i class="fas fa-landmark text-lg"></i><span class="text-[8px] font-black mt-1 uppercase">Sedes</span>
         </button>
     </nav>
 
     <script>
-        // BASE DE DATOS DE SEDES
         const sedesDB = [
-            { estado: "Aragua", ciudad: "Maracay", nombre: "Casa de la Mujer", tel: "02432463422", dir: "Calle López Aveledo Sur", lat: 10.2469, lon: -67.5958 },
-            { estado: "Distrito Capital", ciudad: "Caracas", nombre: "Inamujer Sede Central", tel: "08006853737", dir: "Torre Bandagro, Esq. Jesuitas", lat: 10.505, lon: -66.914 },
-            { estado: "Zulia", ciudad: "Maracaibo", nombre: "Intendencia Municipal", tel: "02617234411", dir: "Av. 100 Sabaneta", lat: 10.644, lon: -71.611 },
-            { estado: "Lara", ciudad: "Barquisimeto", nombre: "Alianza Unidas por Ti", tel: "04245044507", dir: "Sector Centro", lat: 10.067, lon: -69.347 },
-            { estado: "Carabobo", ciudad: "Valencia", nombre: "Inamujer Carabobo", tel: "02418576435", dir: "Calle Libertad", lat: 10.162, lon: -68.007 },
-            { estado: "Anzoátegui", ciudad: "Barcelona", nombre: "CICPC Violencia Género", tel: "02812860555", dir: "Av. Jorge Rodríguez", lat: 10.133, lon: -64.683 },
-            { estado: "Miranda", ciudad: "Los Teques", nombre: "Casa de Justicia", tel: "02123214433", dir: "Calle Ribas", lat: 10.344, lon: -67.043 }
-            // Se pueden agregar más de forma infinita aquí
+            { estado: "Distrito Capital", ciudad: "Caracas", nombre: "Fiscalía Superior", tel: "02125098211", dir: "Av. Urdaneta", lat: 10.5, lon: -66.9 },
+            { estado: "Aragua", ciudad: "Maracay", nombre: "Fiscalía 25° Género", tel: "02432409211", dir: "Calle Páez", lat: 10.2, lon: -67.5 },
+            { estado: "Zulia", ciudad: "Maracaibo", nombre: "MP Sede Portillo", tel: "02617500111", dir: "Calle 78", lat: 10.6, lon: -71.6 }
         ];
 
-        function renderSedes(data) {
-            const container = document.getElementById('lista-sedes');
-            container.innerHTML = '';
-            data.forEach(s => {
-                container.innerHTML += `
-                    <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 sede-card">
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="bg-purple-100 text-purple-700 text-[8px] font-black px-2 py-1 rounded-full uppercase">${s.estado}</span>
-                            <a href="tel:${s.tel}" class="bg-purple-600 text-white w-8 h-8 rounded-xl flex items-center justify-center shadow-md"><i class="fas fa-phone-alt text-xs"></i></a>
-                        </div>
-                        <h4 class="font-extrabold text-sm text-gray-800">${s.nombre}</h4>
-                        <p class="text-[10px] text-gray-400 mt-1 font-bold italic">${s.ciudad}</p>
-                        <p class="text-[10px] text-gray-500 mt-2 leading-relaxed"><i class="fas fa-map-pin mr-1 text-purple-300"></i> ${s.dir}</p>
-                    </div>
-                `;
-            });
-        }
-
-        function filtrarSedes() {
-            const estado = document.getElementById('filtroEstado').value;
-            const ciudad = document.getElementById('busquedaCiudad').value.toLowerCase();
+        function checkV(level) {
+            const res = document.getElementById('v-result');
+            const title = document.getElementById('v-title');
+            const desc = document.getElementById('v-desc');
+            res.classList.remove('hidden');
             
-            const filtradas = sedesDB.filter(s => {
-                const matchEstado = estado === 'todos' || s.estado === estado;
-                const matchCiudad = s.ciudad.toLowerCase().includes(ciudad);
-                return matchEstado && matchCiudad;
-            });
-            renderSedes(filtradas);
-        }
-
-        function detectarUbicacion() {
-            const status = document.getElementById('location-status');
-            status.innerHTML = "Detectando ubicación...";
-            
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition((pos) => {
-                    const latUser = pos.coords.latitude;
-                    const lonUser = pos.coords.longitude;
-                    
-                    // Ordenar por cercanía
-                    const cercanas = [...sedesDB].sort((a, b) => {
-                        const distA = Math.sqrt(Math.pow(a.lat - latUser, 2) + Math.pow(a.lon - lonUser, 2));
-                        const distB = Math.sqrt(Math.pow(b.lat - latUser, 2) + Math.pow(b.lon - lonUser, 2));
-                        return distA - distB;
-                    });
-                    
-                    status.innerHTML = "Ubicación detectada • Cerca de ti";
-                    showTab('sedes');
-                    renderSedes(cercanas);
-                }, () => {
-                    status.innerHTML = "Error al detectar ubicación";
-                    alert("Por favor, activa el GPS para encontrar la sede más cercana.");
-                });
+            if(level === 1) {
+                title.innerText = "¡Ten cuidado!";
+                title.className = "font-black text-sm uppercase text-yellow-600";
+                desc.innerText = "La violencia psicológica suele escalar. Es momento de poner límites claros o buscar asesoría antes de que aumente de intensidad.";
+            } else if(level === 2) {
+                title.innerText = "¡Reacciona!";
+                title.className = "font-black text-sm uppercase text-orange-600";
+                desc.innerText = "Estás en una situación de riesgo medio. El control y las amenazas son delitos. Considera seriamente hablar con un profesional.";
+            } else {
+                title.innerText = "¡Peligro de Muerte!";
+                title.className = "font-black text-sm uppercase text-red-600 animate-pulse";
+                desc.innerText = "Tu vida corre peligro. Según la ley venezolana, tienes derecho a medidas de protección inmediatas. Sal del lugar y denuncia ya.";
             }
         }
 
@@ -231,8 +228,7 @@
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('nav-active'));
-            // Lógica para marcar botón activo
-            event.currentTarget.classList.add('nav-active');
+            if(event && event.currentTarget.classList) event.currentTarget.classList.add('nav-active');
             window.scrollTo(0,0);
         }
 
@@ -240,21 +236,36 @@
             const input = document.getElementById('chatInput');
             const box = document.getElementById('chatBox');
             if(!input.value) return;
-            
-            box.innerHTML += `<div class="flex justify-end"><div class="bg-purple-600 text-white p-4 rounded-2xl rounded-tr-none max-w-[85%] font-bold shadow-md">${input.value}</div></div>`;
-            
+            box.innerHTML += `<div class="flex justify-end"><div class="bg-purple-600 text-white p-4 rounded-2xl max-w-[85%] font-bold">${input.value}</div></div>`;
+            const text = input.value.toLowerCase();
+            input.value = '';
             setTimeout(() => {
-                let r = "Entiendo tu preocupación. Según la Ley Orgánica sobre el Derecho de las Mujeres a una Vida Libre de Violencia, esto podría tipificarse como violencia psicológica. Mi consejo inicial: mantén a mano tus documentos y el número de un familiar de confianza. ¿Quieres que busquemos la sede de fiscalía más cercana?";
-                box.innerHTML += `<div class="flex items-start"><div class="bg-white border p-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm leading-relaxed">${r}</div></div>`;
+                let r = "Te escucho. Como IA, mi deber es recordarte que el Art. 90 de la Ley te protege con medidas de alejamiento. ¿Quieres que veamos juntas el plan de seguridad?";
+                if(text.includes("miedo")) r = "El miedo es una respuesta natural al peligro. No estás exagerando. Respira profundo. ¿Tienes un lugar donde puedas ir si las cosas se ponen difíciles hoy?";
+                box.innerHTML += `<div class="flex items-start gap-2"><div class="bg-white p-4 rounded-2xl border text-gray-700 shadow-sm">${r}</div></div>`;
                 box.scrollTop = box.scrollHeight;
             }, 1000);
-            
-            input.value = '';
-            box.scrollTop = box.scrollHeight;
         }
 
-        // Carga inicial
+        function renderSedes(data) {
+            const container = document.getElementById('lista-sedes');
+            container.innerHTML = '';
+            data.forEach(s => {
+                container.innerHTML += `<div class="card-violet p-5 flex justify-between items-center">
+                    <div><h4 class="font-black text-xs">${s.nombre}</h4><p class="text-[9px] text-gray-400">${s.dir}</p></div>
+                    <a href="tel:${s.tel}" class="bg-purple-600 text-white p-3 rounded-xl"><i class="fas fa-phone"></i></a>
+                </div>`;
+            });
+        }
+
+        function filtrarSedes() {
+            const estado = document.getElementById('filtroEstado').value;
+            const filtradas = estado === 'todos' ? sedesDB : sedesDB.filter(s => s.estado === estado);
+            renderSedes(filtradas);
+        }
+
         renderSedes(sedesDB);
     </script>
 </body>
-</html>
+                    </html>
+                
