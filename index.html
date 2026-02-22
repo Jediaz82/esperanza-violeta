@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esperanza Violeta | Ecosistema de Protección</title>
+    <title>Esperanza Violeta | Sistema Integral de Protección</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
         :root { --violeta: #8e44ad; --fondo: #f8faff; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--fondo); color: #1a1a1a; }
-        .tab-content { display: none; padding-bottom: 100px; }
+        .tab-content { display: none; padding-bottom: 120px; }
         .active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-active { color: var(--violeta) !important; font-weight: 800; transform: translateY(-5px); }
-        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .nav-active { color: var(--violeta) !important; font-weight: 800; transform: translateY(-5px); transition: all 0.3s; }
         .card-violet { background: white; border-radius: 2rem; border: 1px solid #f0e7ff; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
         .btn-grad { background: linear-gradient(135deg, #8e44ad 0%, #6366f1 100%); color: white; }
+        .sos-pulse { animation: pulse-red 2s infinite; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); } 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); } }
     </style>
 </head>
 <body class="overflow-x-hidden">
@@ -25,163 +26,164 @@
         <div class="flex justify-between items-center">
             <div>
                 <h1 class="text-xl font-black italic tracking-tighter uppercase">Esperanza Violeta</h1>
-                <p id="location-status" class="text-[9px] font-bold opacity-80 uppercase tracking-widest">Venezuela • Panel de Control</p>
+                <p id="location-status" class="text-[9px] font-bold opacity-80 uppercase tracking-widest">Venezuela • 2026 Conectada</p>
             </div>
-            <div class="flex gap-2">
-                <button onclick="detectarUbicacion()" class="bg-white/20 p-3 rounded-xl backdrop-blur-md"><i class="fas fa-location-arrow"></i></button>
-            </div>
+            <button onclick="detectarUbicacion()" class="bg-white/20 p-3 rounded-xl backdrop-blur-md shadow-inner">
+                <i class="fas fa-location-arrow"></i>
+            </button>
         </div>
     </header>
 
     <main class="px-4 -mt-6 relative z-10">
 
-        <div id="home" class="tab-content active space-y-6">
+        <div id="home" class="tab-content active space-y-5">
             <div class="card-violet p-6 border-b-4 border-red-500">
-                <a href="tel:911" class="w-full btn-grad py-5 rounded-3xl flex items-center justify-center gap-4 text-3xl font-black shadow-lg">
-                    <i class="fas fa-phone-alt animate-bounce"></i> SOS 911
+                <a href="tel:911" class="sos-pulse w-full bg-red-600 text-white py-5 rounded-3xl flex items-center justify-center gap-4 text-3xl font-black shadow-lg active:scale-95 transition">
+                    <i class="fas fa-phone-alt"></i> SOS 911
                 </a>
             </div>
 
-            <div onclick="showTab('v-metro')" class="card-violet p-5 flex items-center gap-4 bg-gradient-to-r from-orange-50 to-red-50 border-orange-200 border cursor-pointer">
+            <div onclick="showTab('v-metro')" class="card-violet p-5 flex items-center gap-4 bg-gradient-to-r from-orange-50 to-red-50 border-orange-200 border cursor-pointer active:scale-95 transition">
                 <div class="text-3xl text-orange-500"><i class="fas fa-thermometer-half"></i></div>
                 <div>
-                    <h4 class="font-black text-xs text-orange-800 uppercase">Violentómetro</h4>
-                    <p class="text-[10px] text-orange-600 font-bold">Mide tu situación actual aquí</p>
+                    <h4 class="font-black text-xs text-orange-800 uppercase leading-none">Violentómetro</h4>
+                    <p class="text-[9px] text-orange-600 font-bold mt-1 uppercase">Mide tu riesgo aquí</p>
                 </div>
                 <i class="fas fa-chevron-right ml-auto text-orange-300"></i>
             </div>
 
-            <div class="grid grid-cols-2 gap-3">
-                <div onclick="showTab('news')" class="card-violet p-5 flex flex-col items-center gap-2">
-                    <i class="fas fa-newspaper text-purple-600 text-xl"></i>
+            <div class="grid grid-cols-2 gap-4">
+                <div onclick="showTab('news')" class="card-violet p-5 flex flex-col items-center gap-2 active:scale-95 transition">
+                    <i class="fas fa-newspaper text-purple-600 text-2xl"></i>
                     <span class="text-[10px] font-black uppercase">Noticias</span>
                 </div>
-                <div onclick="showTab('recursos')" class="card-violet p-5 flex flex-col items-center gap-2">
-                    <i class="fas fa-book-open text-indigo-600 text-xl"></i>
+                <div onclick="showTab('recursos')" class="card-violet p-5 flex flex-col items-center gap-2 active:scale-95 transition">
+                    <i class="fas fa-book-open text-indigo-600 text-2xl"></i>
                     <span class="text-[10px] font-black uppercase">Recursos</span>
                 </div>
             </div>
+
+            <div class="card-violet p-6 bg-green-600 text-white">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="h-12 w-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl"><i class="fab fa-whatsapp"></i></div>
+                    <h3 class="font-black text-sm uppercase">Comunidad de Apoyo</h3>
+                </div>
+                <a href="https://chat.whatsapp.com/Edpuftg89zoDDHTBiMPabI" class="block w-full bg-white text-green-700 text-center py-3 rounded-xl font-black text-xs shadow-md">UNIRME AL GRUPO</a>
+            </div>
+        </div>
+
+        <div id="sedes" class="tab-content space-y-4">
+            <h2 class="text-xl font-black text-purple-900 px-2 italic uppercase">Sedes y Organismos</h2>
+            <div class="space-y-2 px-1">
+                <select id="filtroEstado" onchange="filtrarSedes()" class="w-full p-4 rounded-2xl bg-white shadow-sm text-xs font-bold text-purple-700 border-none outline-none appearance-none">
+                    <option value="todos">Todos los Estados de Venezuela</option>
+                    <option value="Amazonas">Amazonas</option><option value="Anzoátegui">Anzoátegui</option>
+                    <option value="Apure">Apure</option><option value="Aragua">Aragua</option>
+                    <option value="Barinas">Barinas</option><option value="Bolívar">Bolívar</option>
+                    <option value="Carabobo">Carabobo</option><option value="Cojedes">Cojedes</option>
+                    <option value="Distrito Capital">Distrito Capital</option><option value="Falcón">Falcón</option>
+                    <option value="Guárico">Guárico</option><option value="Lara">Lara</option>
+                    <option value="Mérida">Mérida</option><option value="Miranda">Miranda</option>
+                    <option value="Monagas">Monagas</option><option value="Nueva Esparta">Nueva Esparta</option>
+                    <option value="Portuguesa">Portuguesa</option><option value="Sucre">Sucre</option>
+                    <option value="Táchira">Táchira</option><option value="Trujillo">Trujillo</option>
+                    <option value="Vargas">Vargas</option><option value="Yaracuy">Yaracuy</option>
+                    <option value="Zulia">Zulia</option>
+                </select>
+                <input type="text" id="busquedaCiudad" onkeyup="filtrarSedes()" placeholder="Escribe tu ciudad (ej: Maracay)..." class="w-full p-4 rounded-2xl bg-white shadow-sm text-xs border-none outline-none">
+            </div>
+            <div id="lista-sedes" class="space-y-4">
+                </div>
         </div>
 
         <div id="news" class="tab-content space-y-4">
-            <h2 class="text-xl font-black text-purple-900 px-2 italic">Actualidad Violeta</h2>
-            <div class="space-y-4">
-                <div class="card-violet overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1573163231162-735552949222?auto=format&fit=crop&q=80&w=400" class="w-full h-32 object-cover">
-                    <div class="p-4">
-                        <span class="text-[8px] font-bold text-purple-600 uppercase">Venezuela 2026</span>
-                        <h4 class="font-bold text-sm mt-1 leading-tight">Nuevas Fiscalías Especializadas se inauguran en el Occidente del país.</h4>
-                        <p class="text-[10px] text-gray-500 mt-2">Se fortalece la atención en Zulia y Falcón con personal capacitado en enfoque de género.</p>
-                    </div>
-                </div>
-                <div class="card-violet p-4 border-l-4 border-indigo-500">
-                    <h4 class="font-bold text-sm">Estudio: Autonomía financiera reduce riesgo en un 60%</h4>
-                    <p class="text-[10px] text-gray-500 mt-1">Nuevas cifras indican que la formación técnica es clave para romper ciclos de violencia.</p>
+            <h2 class="text-xl font-black text-purple-900 px-2 italic uppercase">Noticias y Actualidad</h2>
+            <div class="card-violet overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1573163231162-735552949222?auto=format&fit=crop&q=80&w=400" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <span class="bg-purple-100 text-purple-600 text-[8px] font-black px-2 py-1 rounded-full uppercase">Legal 2026</span>
+                    <h4 class="font-bold text-sm mt-2">Nueva reforma a la Ley sobre el Derecho de las Mujeres a una Vida Libre de Violencia.</h4>
+                    <p class="text-[10px] text-gray-500 mt-2">Se agilizan las órdenes de protección en menos de 24 horas en todo el territorio nacional.</p>
                 </div>
             </div>
         </div>
 
         <div id="recursos" class="tab-content space-y-4">
-            <h2 class="text-xl font-black text-purple-900 px-2 italic">Conocimiento es Poder</h2>
-            <div class="grid grid-cols-1 gap-3">
+            <h2 class="text-xl font-black text-purple-900 px-2 italic uppercase">Tipos de Violencia</h2>
+            <div class="space-y-3">
                 <div class="card-violet p-5 border-l-4 border-purple-500">
-                    <h4 class="font-black text-xs uppercase mb-2">1. Violencia Psicológica</h4>
-                    <p class="text-[10px] text-gray-600">Celos excesivos, insultos, control de amistades y humillaciones. Es el inicio del ciclo.</p>
+                    <h4 class="font-black text-xs uppercase mb-1">Violencia Física</h4>
+                    <p class="text-[10px] text-gray-600 leading-relaxed">Cualquier acto que cause daño no accidental, usando fuerza física o armas. Es penado por el Art. 42.</p>
                 </div>
                 <div class="card-violet p-5 border-l-4 border-indigo-500">
-                    <h4 class="font-black text-xs uppercase mb-2">2. Violencia Patrimonial</h4>
-                    <p class="text-[10px] text-gray-600">Cuando te quita el sueldo, destruye tus documentos o rompe tus objetos personales.</p>
+                    <h4 class="font-black text-xs uppercase mb-1">Violencia Psicológica</h4>
+                    <p class="text-[10px] text-gray-600 leading-relaxed">Trato humillante, vigilancia constante, insultos o aislamiento. Daña tu estabilidad emocional.</p>
                 </div>
-                <div class="card-violet p-5 border-l-4 border-pink-500">
-                    <h4 class="font-black text-xs uppercase mb-2">Tips de Seguridad</h4>
-                    <ul class="text-[10px] text-gray-600 space-y-2 mt-2">
-                        <li>• Mantén tus documentos en un lugar secreto o digitalizados.</li>
-                        <li>• Establece una "Palabra Clave" con una vecina en caso de emergencia.</li>
+                <div class="card-violet p-5 border-l-4 border-orange-500">
+                    <h4 class="font-black text-xs uppercase mb-1">Violencia Económica</h4>
+                    <p class="text-[10px] text-gray-600 leading-relaxed">Controlar tus ingresos, romper tus pertenencias o impedirte trabajar para que dependas de él.</p>
+                </div>
+                <div class="card-violet p-5 bg-purple-50">
+                    <h4 class="font-black text-xs uppercase mb-2">Consejos de Seguridad</h4>
+                    <ul class="text-[10px] text-gray-600 space-y-2">
+                        <li>• Escanea tus documentos y guárdalos en un correo secreto.</li>
+                        <li>• Ten una muda de ropa guardada en casa de una amiga.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div id="cursos" class="tab-content space-y-4">
-            <h2 class="text-xl font-black text-purple-900 px-2 italic">Hacia tu Libertad</h2>
-            <div class="card-violet p-5 bg-indigo-600 text-white">
-                <h4 class="font-black text-sm uppercase">Cursos Gratuitos</h4>
-                <p class="text-[10px] opacity-80 mt-1 font-medium">Habilidades para independizarte económicamente.</p>
-            </div>
-            <div class="space-y-3">
-                <div class="card-violet p-4 flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-xs">Gestión de Emprendimientos Online</h4>
-                        <p class="text-[9px] text-gray-400">Marketing y ventas por redes sociales</p>
-                    </div>
-                    <button class="bg-purple-100 text-purple-600 p-2 px-4 rounded-xl text-[10px] font-black uppercase">Ver</button>
+            <h2 class="text-xl font-black text-purple-900 px-2 italic uppercase">Ruta de Independencia</h2>
+            <div class="space-y-4">
+                <div class="card-violet p-5 border-t-4 border-indigo-600">
+                    <h4 class="font-black text-xs uppercase">1. Marketing Digital y Ventas</h4>
+                    <p class="text-[10px] text-gray-400 mt-1">Aprende a generar ingresos desde tu teléfono vendiendo productos o servicios.</p>
+                    <button class="mt-3 w-full bg-indigo-100 text-indigo-700 py-3 rounded-xl font-black text-[10px] uppercase">Comenzar Curso</button>
                 </div>
-                <div class="card-violet p-4 flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-xs">Asistente Administrativo Digital</h4>
-                        <p class="text-[9px] text-gray-400">Excel y herramientas de oficina</p>
-                    </div>
-                    <button class="bg-purple-100 text-purple-600 p-2 px-4 rounded-xl text-[10px] font-black uppercase">Ver</button>
-                </div>
-                <div class="card-violet p-4 flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-xs">Repostería y Cocina Comercial</h4>
-                        <p class="text-[9px] text-gray-400">Genera ingresos desde casa</p>
-                    </div>
-                    <button class="bg-purple-100 text-purple-600 p-2 px-4 rounded-xl text-[10px] font-black uppercase">Ver</button>
+                <div class="card-violet p-5 border-t-4 border-purple-600">
+                    <h4 class="font-black text-xs uppercase">2. Finanzas para Emprendedoras</h4>
+                    <p class="text-[10px] text-gray-400 mt-1">Cómo administrar tu dinero y ahorrar para tu libertad.</p>
+                    <button class="mt-3 w-full bg-purple-100 text-purple-700 py-3 rounded-xl font-black text-[10px] uppercase">Comenzar Curso</button>
                 </div>
             </div>
         </div>
 
         <div id="v-metro" class="tab-content space-y-4">
-            <h2 class="text-xl font-black text-red-900 px-2 italic uppercase">Violentómetro</h2>
-            <p class="text-[10px] px-2 font-bold text-gray-500 uppercase">Marca lo que estás viviendo para recibir ayuda:</p>
-            
+            <h2 class="text-xl font-black text-red-900 px-2 italic uppercase">Medidor de Riesgo</h2>
             <div class="space-y-2">
-                <button onclick="checkV(1)" class="w-full p-4 bg-yellow-50 text-yellow-800 rounded-2xl text-[11px] font-bold text-left border border-yellow-100">Bromas hirientes, chantajes, mentiras.</button>
-                <button onclick="checkV(2)" class="w-full p-4 bg-orange-50 text-orange-800 rounded-2xl text-[11px] font-bold text-left border border-orange-100">Amenazas, prohibiciones, destrucción de objetos.</button>
-                <button onclick="checkV(3)" class="w-full p-4 bg-red-100 text-red-800 rounded-2xl text-[11px] font-bold text-left border border-red-200">Golpes, empujones, amenazas de muerte.</button>
+                <button onclick="checkV(1)" class="w-full p-5 bg-yellow-50 text-yellow-800 rounded-2xl text-[11px] font-bold text-left border border-yellow-200">Bromas hirientes, chantajes, celos excesivos.</button>
+                <button onclick="checkV(2)" class="w-full p-5 bg-orange-50 text-orange-800 rounded-2xl text-[11px] font-bold text-left border border-orange-200">Gritos, insultos, prohibiciones, destrucción de bienes.</button>
+                <button onclick="checkV(3)" class="w-full p-5 bg-red-100 text-red-800 rounded-2xl text-[11px] font-bold text-left border border-red-300">Empujones, golpes, amenazas con armas, violación.</button>
             </div>
-
-            <div id="v-result" class="card-violet p-6 mt-4 hidden bg-white">
+            <div id="v-result" class="card-violet p-6 mt-4 hidden bg-white border-2 border-red-500">
                 <h4 id="v-title" class="font-black text-sm uppercase"></h4>
-                <p id="v-desc" class="text-[11px] mt-2 text-gray-600 leading-relaxed"></p>
-                <div class="flex gap-2 mt-4">
-                    <button onclick="showTab('ia')" class="btn-grad text-[10px] font-black p-3 rounded-xl flex-1 uppercase">Hablar con Violeta</button>
-                    <button onclick="showTab('sedes')" class="bg-gray-100 text-gray-600 text-[10px] font-black p-3 rounded-xl flex-1 uppercase">Ver Fiscalía</button>
-                </div>
+                <p id="v-desc" class="text-[11px] mt-2 text-gray-600 leading-relaxed font-medium"></p>
+                <button onclick="showTab('sedes')" class="mt-4 w-full btn-grad py-4 rounded-2xl text-[10px] font-black uppercase shadow-lg">Buscar Protección Ahora</button>
             </div>
         </div>
 
-        <div id="sedes" class="tab-content space-y-4">
-            <h2 class="text-xl font-black text-purple-900 px-2">Sedes</h2>
-            <select id="filtroEstado" onchange="filtrarSedes()" class="w-full p-4 rounded-2xl bg-white shadow-sm text-xs font-bold border-none outline-none text-purple-700">
-                <option value="todos">Todos los Estados</option>
-                <option value="Distrito Capital">Distrito Capital</option>
-                <option value="Aragua">Aragua</option>
-                <option value="Zulia">Zulia</option>
-                <option value="Carabobo">Carabobo</option>
-            </select>
-            <div id="lista-sedes" class="space-y-4"></div>
-        </div>
-
-        <div id="ia" class="tab-content space-y-4">
-            <div class="bg-white rounded-[2.5rem] shadow-2xl h-[500px] flex flex-col overflow-hidden">
-                <div class="bg-[#8e44ad] p-5 text-white flex items-center gap-3">
-                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center"><i class="fas fa-robot"></i></div>
-                    <div><h4 class="font-black text-xs uppercase">Violeta IA</h4><p class="text-[8px] opacity-70">Experta en Género</p></div>
+        <div id="ia" class="tab-content">
+            <div class="card-violet h-[550px] flex flex-col overflow-hidden shadow-2xl">
+                <div class="bg-gradient-to-r from-purple-700 to-indigo-600 p-5 text-white flex items-center gap-4">
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center border border-white/30"><i class="fas fa-robot text-xl"></i></div>
+                    <div><h4 class="font-black text-xs uppercase">Violeta IA</h4><p class="text-[8px] opacity-70">Protocolo de Apoyo Real</p></div>
                 </div>
-                <div id="chatBox" class="flex-1 p-5 overflow-y-auto space-y-4 text-[11px] bg-slate-50"></div>
+                <div id="chatBox" class="flex-1 p-5 overflow-y-auto space-y-4 bg-slate-50 text-[11px]">
+                    <div class="bg-white p-4 rounded-3xl rounded-tl-none border border-purple-50 text-gray-700 leading-relaxed font-medium">
+                        Hola. Soy **Violeta**. Reconozco tu valentía hoy. Podemos hablar de cómo te sientes, de la ley venezolana o de cómo crear un plan de seguridad. ¿Qué tienes en mente?
+                    </div>
+                </div>
                 <div class="p-4 bg-white border-t flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Describe tu situación..." class="flex-1 bg-gray-50 p-4 rounded-2xl text-xs outline-none">
-                    <button onclick="sendChat()" class="bg-purple-600 text-white w-12 h-12 rounded-2xl"><i class="fas fa-paper-plane"></i></button>
+                    <input type="text" id="chatInput" placeholder="Escribe aquí con total confianza..." class="flex-1 bg-gray-100 p-4 rounded-2xl text-[11px] outline-none border-none">
+                    <button onclick="sendChat()" class="bg-purple-600 text-white w-12 h-12 rounded-2xl shadow-lg active:scale-90 transition"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <nav class="fixed bottom-0 w-full glass flex justify-around p-4 shadow-2xl border-t border-gray-100 z-[100] rounded-t-[30px]">
+    <nav class="fixed bottom-0 w-full glass flex justify-around p-4 shadow-2xl border-t border-gray-100 z-[100] rounded-t-[35px]">
         <button onclick="showTab('home')" class="nav-btn flex flex-col items-center text-gray-400 nav-active">
             <i class="fas fa-home text-lg"></i><span class="text-[8px] font-black mt-1 uppercase">Inicio</span>
         </button>
@@ -194,41 +196,93 @@
         <button onclick="showTab('sedes')" class="nav-btn flex flex-col items-center text-gray-400">
             <i class="fas fa-landmark text-lg"></i><span class="text-[8px] font-black mt-1 uppercase">Sedes</span>
         </button>
+        <button onclick="window.location.href='https://www.google.com/search?q=noticias+clima+venezuela'" class="flex flex-col items-center text-red-300">
+            <i class="fas fa-times-circle text-lg"></i><span class="text-[8px] font-black mt-1 uppercase">Salir</span>
+        </button>
     </nav>
 
     <script>
+        // BASE DE DATOS MASIVA: ORGANISMOS GUBERNAMENTALES Y PRIVADOS POR ESTADO
         const sedesDB = [
-            { estado: "Distrito Capital", ciudad: "Caracas", nombre: "Fiscalía Superior", tel: "02125098211", dir: "Av. Urdaneta", lat: 10.5, lon: -66.9 },
-            { estado: "Aragua", ciudad: "Maracay", nombre: "Fiscalía 25° Género", tel: "02432409211", dir: "Calle Páez", lat: 10.2, lon: -67.5 },
-            { estado: "Zulia", ciudad: "Maracaibo", nombre: "MP Sede Portillo", tel: "02617500111", dir: "Calle 78", lat: 10.6, lon: -71.6 }
+            // DISTRITO CAPITAL
+            { estado: "Distrito Capital", ciudad: "Caracas", nombre: "Fiscalía Superior de Caracas", tel: "02125098211", dir: "Av. Urdaneta, Sede MP", lat: 10.509, lon: -66.912, tipo: "Estado" },
+            { estado: "Distrito Capital", ciudad: "Caracas", nombre: "CICPC Violencia de Género", tel: "02125084111", dir: "Avenida Urdaneta, Edif. Icauca", lat: 10.506, lon: -66.914, tipo: "Estado" },
+            { estado: "Distrito Capital", ciudad: "Caracas", nombre: "Inamujer Sede Central", tel: "08006853737", dir: "Esq. Jesuitas, Torre Bandagro", lat: 10.510, lon: -66.915, tipo: "Estado" },
+            { estado: "Distrito Capital", ciudad: "Caracas", nombre: "ONG Tinta Violeta", tel: "04241393110", dir: "Atención psicosocial y legal", lat: 10.480, lon: -66.903, tipo: "Privado" },
+            
+            // ARAGUA
+            { estado: "Aragua", ciudad: "Maracay", nombre: "Fiscalía 25° Género Aragua", tel: "02432409211", dir: "Calle Páez, Edif. MP", lat: 10.247, lon: -67.595, tipo: "Estado" },
+            { estado: "Aragua", ciudad: "Maracay", nombre: "Casa de la Mujer Aragua", tel: "02432463422", dir: "Calle López Aveledo Sur", lat: 10.246, lon: -67.596, tipo: "Estado" },
+            { estado: "Aragua", ciudad: "Maracay", nombre: "Prefectura de Girardot", tel: "02432460111", dir: "Palacio Municipal", lat: 10.248, lon: -67.593, tipo: "Estado" },
+
+            // ZULIA
+            { estado: "Zulia", ciudad: "Maracaibo", nombre: "Ministerio Público - Sede Portillo", tel: "02617500111", dir: "Av. 11 con calle 78", lat: 10.665, lon: -71.612, tipo: "Estado" },
+            { estado: "Zulia", ciudad: "Maracaibo", nombre: "Intendencia Municipal", tel: "02617234411", dir: "Av. Bella Vista", lat: 10.655, lon: -71.605, tipo: "Estado" },
+
+            // CARABOBO
+            { estado: "Carabobo", ciudad: "Valencia", nombre: "Fiscalía Superior Carabobo", tel: "02418576435", dir: "Calle Libertad, Edif. MP", lat: 10.181, lon: -68.001, tipo: "Estado" },
+            { estado: "Carabobo", ciudad: "Valencia", nombre: "Inamujer Carabobo", tel: "02418583411", dir: "Calle Libertad entre Av. Urdaneta", lat: 10.182, lon: -68.002, tipo: "Estado" },
+
+            // LARA
+            { estado: "Lara", ciudad: "Barquisimeto", nombre: "Fiscalía Género Lara", tel: "02512321111", dir: "Av. Lara con Av. Los Leones", lat: 10.065, lon: -69.295, tipo: "Estado" },
+
+            // TACHIRA
+            { estado: "Táchira", ciudad: "San Cristóbal", nombre: "Ministerio Público Táchira", tel: "02763435555", dir: "Calle 11 entre Av. 8 y 9", lat: 7.766, lon: -72.231, tipo: "Estado" },
+
+            // BOLIVAR
+            { estado: "Bolívar", ciudad: "Ciudad Bolívar", nombre: "Palacio de Justicia Violencia", tel: "02856321286", dir: "Av. República", lat: 8.125, lon: -63.541, tipo: "Estado" }
         ];
+
+        function renderSedes(data) {
+            const container = document.getElementById('lista-sedes');
+            container.innerHTML = '';
+            if(data.length === 0) {
+                container.innerHTML = '<p class="text-center p-10 font-bold text-gray-400 text-xs">NO HAY SEDES REGISTRADAS EN ESTA ZONA.</p>';
+                return;
+            }
+            data.forEach(s => {
+                container.innerHTML += `
+                <div class="card-violet p-5 flex flex-col gap-3">
+                    <div class="flex justify-between items-start">
+                        <div class="flex flex-col gap-1">
+                            <span class="bg-purple-100 text-purple-700 text-[8px] font-black px-2 py-1 rounded-full uppercase w-fit">${s.estado}</span>
+                            <span class="${s.tipo === 'Estado' ? 'bg-indigo-600' : 'bg-pink-600'} text-white text-[7px] font-black px-2 py-0.5 rounded-full uppercase w-fit">${s.tipo}</span>
+                        </div>
+                        <a href="tel:${s.tel}" class="bg-purple-600 text-white w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg active:scale-90 transition"><i class="fas fa-phone-alt"></i></a>
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-[12px] text-gray-800 leading-tight uppercase">${s.nombre}</h4>
+                        <p class="text-[10px] text-gray-400 mt-1 font-bold italic">${s.ciudad}</p>
+                    </div>
+                    <p class="text-[11px] text-gray-600 mt-2 leading-relaxed bg-gray-50 p-3 rounded-2xl border border-gray-100"><i class="fas fa-map-marker-alt mr-2 text-purple-400"></i>${s.dir}</p>
+                </div>`;
+            });
+        }
+
+        function filtrarSedes() {
+            const estado = document.getElementById('filtroEstado').value;
+            const ciudad = document.getElementById('busquedaCiudad').value.toLowerCase();
+            const filtradas = sedesDB.filter(s => (estado === 'todos' || s.estado === estado) && (s.ciudad.toLowerCase().includes(ciudad) || s.estado.toLowerCase().includes(ciudad)));
+            renderSedes(filtradas);
+        }
 
         function checkV(level) {
             const res = document.getElementById('v-result');
             const title = document.getElementById('v-title');
             const desc = document.getElementById('v-desc');
             res.classList.remove('hidden');
-            
-            if(level === 1) {
-                title.innerText = "¡Ten cuidado!";
-                title.className = "font-black text-sm uppercase text-yellow-600";
-                desc.innerText = "La violencia psicológica suele escalar. Es momento de poner límites claros o buscar asesoría antes de que aumente de intensidad.";
-            } else if(level === 2) {
-                title.innerText = "¡Reacciona!";
-                title.className = "font-black text-sm uppercase text-orange-600";
-                desc.innerText = "Estás en una situación de riesgo medio. El control y las amenazas son delitos. Considera seriamente hablar con un profesional.";
-            } else {
-                title.innerText = "¡Peligro de Muerte!";
-                title.className = "font-black text-sm uppercase text-red-600 animate-pulse";
-                desc.innerText = "Tu vida corre peligro. Según la ley venezolana, tienes derecho a medidas de protección inmediatas. Sal del lugar y denuncia ya.";
-            }
+            if(level === 1) { title.innerText = "¡Alerta!"; title.className="font-black text-sm uppercase text-yellow-600"; desc.innerText = "La violencia no es normal. Empieza con bromas e insultos. Pon límites ahora o busca orientación en el chat."; }
+            else if(level === 2) { title.innerText = "¡Peligro!"; title.className="font-black text-sm uppercase text-orange-600"; desc.innerText = "Gritos, amenazas y control son delitos en Venezuela. Tu estabilidad está en riesgo. Acude a una sede de Inamujer."; }
+            else { title.innerText = "¡Emergencia Extrema!"; title.className="font-black text-sm uppercase text-red-600 animate-pulse"; desc.innerText = "Tu vida corre peligro inminente. Sal del lugar y llama al 911 o acude al CICPC/Fiscalía de inmediato. Pide medidas de protección."; }
+            res.scrollIntoView({behavior: "smooth"});
         }
 
         function showTab(id) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('nav-active'));
-            if(event && event.currentTarget.classList) event.currentTarget.classList.add('nav-active');
+            const currentBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => b.getAttribute('onclick').includes(id));
+            if(currentBtn) currentBtn.classList.add('nav-active');
             window.scrollTo(0,0);
         }
 
@@ -236,36 +290,43 @@
             const input = document.getElementById('chatInput');
             const box = document.getElementById('chatBox');
             if(!input.value) return;
-            box.innerHTML += `<div class="flex justify-end"><div class="bg-purple-600 text-white p-4 rounded-2xl max-w-[85%] font-bold">${input.value}</div></div>`;
-            const text = input.value.toLowerCase();
+            const uMsg = input.value;
+            box.innerHTML += `<div class="flex justify-end"><div class="bg-purple-600 text-white p-4 rounded-3xl rounded-tr-none max-w-[85%] font-bold shadow-md animate-slideUp">${uMsg}</div></div>`;
+            const text = uMsg.toLowerCase();
             input.value = '';
+            box.scrollTop = box.scrollHeight;
             setTimeout(() => {
-                let r = "Te escucho. Como IA, mi deber es recordarte que el Art. 90 de la Ley te protege con medidas de alejamiento. ¿Quieres que veamos juntas el plan de seguridad?";
-                if(text.includes("miedo")) r = "El miedo es una respuesta natural al peligro. No estás exagerando. Respira profundo. ¿Tienes un lugar donde puedas ir si las cosas se ponen difíciles hoy?";
-                box.innerHTML += `<div class="flex items-start gap-2"><div class="bg-white p-4 rounded-2xl border text-gray-700 shadow-sm">${r}</div></div>`;
+                let r = "Te escucho. Como IA, te recuerdo que tu testimonio es prueba suficiente en Venezuela para iniciar una investigación. ¿Sientes miedo de estar en casa hoy?";
+                if(text.includes("miedo") || text.includes("golpe")) r = "Siento mucho que estés pasando por esto. En Venezuela, la Ley te protege contra el maltrato físico (Art. 42). Tu vida vale más que cualquier miedo. ¿Quieres que te muestre la fiscalía más cercana?";
+                box.innerHTML += `<div class="flex items-start gap-2 animate-fadeIn"><div class="bg-white p-4 rounded-3xl border border-purple-50 text-gray-700 font-medium">${r}</div></div>`;
                 box.scrollTop = box.scrollHeight;
-            }, 1000);
+            }, 1200);
         }
 
-        function renderSedes(data) {
-            const container = document.getElementById('lista-sedes');
-            container.innerHTML = '';
-            data.forEach(s => {
-                container.innerHTML += `<div class="card-violet p-5 flex justify-between items-center">
-                    <div><h4 class="font-black text-xs">${s.nombre}</h4><p class="text-[9px] text-gray-400">${s.dir}</p></div>
-                    <a href="tel:${s.tel}" class="bg-purple-600 text-white p-3 rounded-xl"><i class="fas fa-phone"></i></a>
-                </div>`;
-            });
-        }
-
-        function filtrarSedes() {
-            const estado = document.getElementById('filtroEstado').value;
-            const filtradas = estado === 'todos' ? sedesDB : sedesDB.filter(s => s.estado === estado);
-            renderSedes(filtradas);
+        function detectarUbicacion() {
+            const status = document.getElementById('location-status');
+            status.innerHTML = "Escaneando Radar...";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((pos) => {
+                    const latU = pos.coords.latitude; const lonU = pos.coords.longitude;
+                    const ordenadas = [...sedesDB].sort((a, b) => {
+                        const dA = Math.sqrt(Math.pow(a.lat - latU, 2) + Math.pow(a.lon - lonU, 2));
+                        const dB = Math.sqrt(Math.pow(b.lat - latU, 2) + Math.pow(b.lon - lonU, 2));
+                        return dA - dB;
+                    });
+                    status.innerHTML = "GPS ACTIVO • CERCA DE TI";
+                    renderSedes(ordenadas);
+                    showTab('sedes');
+                });
+            }
         }
 
         renderSedes(sedesDB);
     </script>
 </body>
-                    </html>
-                
+</html>
+
+
+
+
+                        
