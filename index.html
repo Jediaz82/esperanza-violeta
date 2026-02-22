@@ -3,216 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esperanza Violeta | Ecosistema de Libertad</title>
+    <title>Esperanza Violeta | App Oficial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfaff; color: #1a1a1a; }
-        .violet-gradient { background: linear-gradient(135deg, #4b0082, #8e44ad); }
-        .card { background: white; border-radius: 28px; box-shadow: 0 15px 35px -5px rgba(75, 0, 130, 0.08); transition: all 0.3s ease; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-violet: #8e44ad;
+            --soft-pink: #fdf2f8;
+            --deep-purple: #4b0082;
+        }
+
+        body { font-family: 'Poppins', sans-serif; background-color: #fcfaff; color: #333; }
+        .bg-violet-custom { background-color: var(--primary-violet); }
+        .text-violet-custom { color: var(--primary-violet); }
+        
+        .sos-pulse { animation: pulse-red 2s infinite; }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
         .tab-content { display: none; }
-        .active { display: block; animation: slideIn 0.4s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .nav-active { color: #8e44ad !important; transform: scale(1.1); font-weight: 800; }
-        .chat-bubble-ia { border-radius: 20px 20px 20px 5px; background: #f0ebff; color: #4b0082; }
-        .chat-bubble-user { border-radius: 20px 20px 5px 20px; background: #8e44ad; color: white; }
+        .active { display: block; animation: fadeIn 0.3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .nav-item.active-nav { color: var(--primary-violet); font-weight: 700; }
+        .card { background: white; border-radius: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
     </style>
 </head>
-<body class="pb-36">
+<body class="pb-28">
 
-    <header class="violet-gradient text-white p-8 pb-20 rounded-b-[50px] shadow-2xl relative overflow-hidden">
-        <div class="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
-            <i class="fas fa-hand-holding-heart text-[200px]"></i>
-        </div>
+    <header class="bg-violet-custom text-white p-6 pb-12 rounded-b-[40px] shadow-lg relative overflow-hidden">
         <div class="relative z-10 flex justify-between items-center">
-            <div>
-                <h1 class="text-3xl font-black tracking-tight italic">Esperanza Violeta</h1>
-                <p class="text-[10px] font-bold tracking-[0.3em] uppercase opacity-80 mt-1">Empoderamiento Femenino Vzla</p>
+            <div class="text-left">
+                <h1 class="text-2xl font-bold tracking-tight">ESPERANZA VIOLETA</h1>
+                <p class="text-[10px] opacity-90 font-light uppercase tracking-widest">Apoyo Gratuito Venezuela</p>
             </div>
-            <div class="bg-white/20 p-3 rounded-2xl backdrop-blur-lg border border-white/30">
-                <i class="fas fa-shield-virus text-2xl"></i>
-            </div>
+            <i class="fas fa-heart text-2xl opacity-50"></i>
         </div>
     </header>
 
-    <main class="px-6 -mt-10 space-y-8">
-
-        <div id="tab-inicio" class="tab-content active space-y-6">
-            
-            <div class="card p-6 border-b-4 border-red-500 bg-red-50/30">
-                <a href="tel:911" class="w-full bg-red-600 text-white py-5 rounded-3xl flex items-center justify-center gap-4 text-3xl font-black shadow-xl shadow-red-200 active:scale-95 transition-all">
-                    <i class="fas fa-phone-alt animate-pulse"></i> SOS 911
+    <main class="p-5 -mt-6">
+        
+        <div id="home" class="tab-content active space-y-6">
+            <div class="card p-6 text-center border-2 border-red-50">
+                <p class="text-red-500 font-bold text-xs mb-3">¿ESTÁS EN PELIGRO? LLAMA AHORA</p>
+                <a href="tel:911" class="sos-pulse bg-red-500 text-white w-full py-4 rounded-2xl flex items-center justify-center gap-3 text-2xl font-black">
+                    <i class="fas fa-phone-alt"></i> 911
                 </a>
             </div>
 
-            <div class="card p-6 border-2 border-green-100">
+            <div class="card p-6 bg-green-50 border border-green-200">
                 <div class="flex items-center gap-4 mb-4">
-                    <div class="h-14 w-14 bg-green-500 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-green-100">
-                        <i class="fab fa-whatsapp text-3xl"></i>
+                    <div class="bg-green-500 h-12 w-12 rounded-full flex items-center justify-center text-white text-2xl">
+                        <i class="fab fa-whatsapp"></i>
                     </div>
                     <div>
-                        <h3 class="font-black text-green-900 leading-tight">Comunidad Esperanza Violeta</h3>
-                        <p class="text-[10px] text-green-600 font-bold uppercase">Apoyo Real por WhatsApp</p>
+                        <h4 class="font-bold text-green-900 leading-tight">Comunidad Esperanza Violeta</h4>
+                        <p class="text-[10px] text-green-700 font-medium">Interactúa y recibe apoyo real aquí.</p>
                     </div>
                 </div>
-                <button onclick="window.location.href='https://wa.me/584126924020?text=Hola,%20vengo%20de%20la%20App%20Esperanza%20Violeta.%20Necesito%20unirme%20a%20la%20comunidad%20y%20recibir%20apoyo.'" class="w-full bg-green-600 text-white font-black py-4 rounded-2xl shadow-xl shadow-green-200 active:scale-95 transition-all">
-                    HABLAR CON LA COMUNIDAD
-                </button>
+                <a href="https://chat.whatsapp.com/Edpuftg89zoDDHTBiMPabI" target="_blank" class="block w-full bg-green-600 text-white text-center py-4 rounded-2xl font-bold shadow-lg shadow-green-100">
+                    ENTRAR AL GRUPO AHORA
+                </a>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
-                <div onclick="showTab('tab-sedes')" class="card p-6 flex flex-col items-center justify-center text-center border-b-4 border-purple-500">
-                    <i class="fas fa-hospital text-purple-600 text-3xl mb-2"></i>
-                    <h4 class="font-bold text-sm">SEDES</h4>
-                    <p class="text-[9px] text-gray-400">Públicas/Privadas</p>
+                <div onclick="showTab('sedes')" class="card p-5 flex flex-col items-center">
+                    <i class="fas fa-hospital-user text-violet-custom text-3xl mb-2"></i>
+                    <span class="text-xs font-bold uppercase tracking-tighter">Sedes</span>
                 </div>
-                <div onclick="showTab('tab-ia')" class="card p-6 flex flex-col items-center justify-center text-center border-b-4 border-indigo-500">
-                    <i class="fas fa-brain text-indigo-600 text-3xl mb-2"></i>
-                    <h4 class="font-bold text-sm">IA VIOLETA</h4>
-                    <p class="text-[9px] text-gray-400">Chat de Confianza</p>
+                <div onclick="showTab('aprende')" class="card p-5 flex flex-col items-center border-b-4 border-blue-400">
+                    <i class="fas fa-chalkboard-teacher text-blue-500 text-3xl mb-2"></i>
+                    <span class="text-xs font-bold uppercase tracking-tighter">Cursos</span>
                 </div>
-            </div>
-        </div>
-
-        <div id="tab-sedes" class="tab-content space-y-6">
-            <h2 class="text-2xl font-black text-purple-900">Directorio Nacional</h2>
-            <select id="estadoSelect" onchange="filterSedes()" class="w-full p-4 rounded-2xl bg-white border-2 border-purple-100 font-bold text-purple-700 shadow-sm outline-none">
-                <option value="todos text-gray-400">Selecciona tu Estado</option>
-                <option value="caracas">Distrito Capital (Caracas)</option>
-                <option value="aragua">Aragua</option>
-                <option value="zulia">Zulia</option>
-                <option value="carabobo">Carabobo</option>
-            </select>
-
-            <div id="listaSedes" class="space-y-4">
-                <div class="card p-6 border-l-[12px] border-purple-600" data-estado="caracas">
-                    <span class="bg-purple-100 text-purple-600 text-[8px] font-black px-2 py-1 rounded-md uppercase">Ministerio Público</span>
-                    <h4 class="text-lg font-black mt-2">Fiscalía General</h4>
-                    <p class="text-xs text-gray-500 italic">Av. México, Edif. Sede Principal.</p>
-                    <a href="tel:08003472200" class="mt-4 inline-block bg-purple-600 text-white px-4 py-2 rounded-xl text-xs font-bold">Llamar: 0800-FISCA-00</a>
+                <div onclick="showTab('ia')" class="card p-5 flex flex-col items-center border-b-4 border-indigo-400">
+                    <i class="fas fa-robot text-indigo-500 text-3xl mb-2"></i>
+                    <span class="text-xs font-bold uppercase tracking-tighter">Violeta IA</span>
                 </div>
-                <div class="card p-6 border-l-[12px] border-blue-500" data-estado="aragua">
-                    <span class="bg-blue-100 text-blue-600 text-[8px] font-black px-2 py-1 rounded-md uppercase">ONG Privada</span>
-                    <h4 class="text-lg font-black mt-2">Casa de la Mujer (Maracay)</h4>
-                    <p class="text-xs text-gray-500 italic">Calle López Aveledo, Maracay.</p>
-                    <a href="tel:02432463422" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-bold">Llamar 0243-2463422</a>
+                <div onclick="showTab('test')" class="card p-5 flex flex-col items-center border-b-4 border-orange-400">
+                    <i class="fas fa-star text-orange-400 text-3xl mb-2"></i>
+                    <span class="text-xs font-bold uppercase tracking-tighter">Independencia</span>
                 </div>
             </div>
         </div>
 
-        <div id="tab-aprende" class="tab-content space-y-6">
-            <div class="violet-gradient p-8 rounded-[40px] text-white shadow-xl shadow-purple-200">
-                <h2 class="text-2xl font-black">Escuela de Libertad</h2>
-                <p class="text-xs opacity-80 mt-2 font-medium">Cursos evaluados por IA para tu independencia económica.</p>
+        <div id="sedes" class="tab-content space-y-4">
+            <h2 class="text-xl font-bold text-violet-custom px-2">Centros de Atención</h2>
+            <div class="space-y-3">
+                <div class="card p-5 border-l-8 border-violet-custom">
+                    <h4 class="font-bold">Fiscalía de la Mujer (Nacional)</h4>
+                    <p class="text-xs text-gray-500 mt-1">Denuncias de agresores y protección legal.</p>
+                    <a href="tel:08003472200" class="text-blue-600 text-sm font-bold mt-3 inline-block">Llamar: 0800-FISCA-00</a>
+                </div>
+                <div class="card p-5 border-l-8 border-pink-400">
+                    <h4 class="font-bold">AVESA - Apoyo Psicológico</h4>
+                    <p class="text-xs text-gray-500 mt-1">Especialistas en crisis y trauma.</p>
+                    <a href="tel:04241659742" class="text-pink-600 text-sm font-bold mt-3 inline-block font-bold">Llamar: 0424-1659742</a>
+                </div>
             </div>
-            
-            <div class="space-y-4">
-                <div class="card p-6 flex items-center gap-5">
-                    <div class="h-14 w-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-xl">
-                        <i class="fas fa-laptop-code"></i>
+        </div>
+
+        <div id="aprende" class="tab-content space-y-4">
+            <h2 class="text-xl font-bold text-violet-custom px-2">Academia de Empoderamiento</h2>
+            <div class="card p-6 bg-blue-50/50 border border-blue-100">
+                <div class="flex gap-4">
+                    <div class="bg-blue-600 text-white h-12 w-12 rounded-xl flex items-center justify-center text-xl">
+                        <i class="fas fa-lightbulb"></i>
                     </div>
-                    <div class="flex-1">
-                        <h4 class="font-black text-sm text-gray-800">Marketing Digital Básico</h4>
-                        <div class="w-full bg-gray-100 h-2 rounded-full mt-2">
-                            <div class="bg-indigo-500 h-2 rounded-full w-1/3"></div>
-                        </div>
-                    </div>
-                    <button class="bg-indigo-600 text-white p-2 rounded-xl"><i class="fas fa-play"></i></button>
-                </div>
-
-                <div class="card p-6 bg-orange-50 border-2 border-orange-100">
-                    <h4 class="font-black text-orange-900">Test de Independencia IA</h4>
-                    <p class="text-xs text-orange-700 mt-2 mb-4">La IA evaluará tus habilidades actuales y te dirá en qué negocio puedes tener éxito hoy mismo.</p>
-                    <button onclick="alert('La IA está analizando tu perfil... (Próximamente versión completa)')" class="w-full bg-orange-500 text-white py-4 rounded-2xl font-black shadow-lg shadow-orange-200">INICIAR EVALUACIÓN</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="tab-ia" class="tab-content">
-            <div class="card p-6 h-[550px] flex flex-col shadow-2xl">
-                <div class="flex items-center gap-3 border-b pb-4 mb-4">
-                    <div class="h-10 w-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-black">V</div>
                     <div>
-                        <h4 class="font-black text-sm">Violeta (IA)</h4>
-                        <p class="text-[9px] text-green-500 font-bold uppercase tracking-widest italic">En línea - Escuchándote</p>
+                        <h4 class="font-bold text-blue-900 leading-tight">Curso: Independencia Económica</h4>
+                        <p class="text-[10px] text-blue-700 mt-1 uppercase font-black">Dictado por IA Violeta</p>
                     </div>
                 </div>
-                <div id="chatBox" class="flex-1 overflow-y-auto space-y-4 pr-2">
-                    <div class="chat-bubble-ia p-4 text-xs leading-relaxed font-medium">
-                        Hola, valiente. Soy Violeta. Si tienes miedo, pena o simplemente quieres hablar, estoy aquí para escucharte sin juzgarte jamás. ¿Cómo está tu corazón hoy?
+                <button class="w-full bg-blue-600 text-white mt-5 py-3 rounded-xl font-bold">INICIAR CLASE 1</button>
+            </div>
+        </div>
+
+        <div id="ia" class="tab-content">
+            <div class="card h-[450px] flex flex-col overflow-hidden border">
+                <div class="bg-violet-custom p-4 text-white flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-robot text-lg"></i>
+                        <span class="font-bold">Violeta IA</span>
+                    </div>
+                    <span class="text-[8px] bg-white/20 px-2 py-1 rounded-full">IA SEGURA</span>
+                </div>
+                <div id="chat-box" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-medium">
+                    <div class="bg-purple-50 p-4 rounded-2xl rounded-tl-none text-purple-900 border border-purple-100">
+                        Hola, valiente. Soy Violeta. Aquí puedes hablar con total privacidad si sientes miedo o pena de hacerlo con alguien más. ¿En qué puedo apoyarte hoy?
                     </div>
                 </div>
-                <div class="mt-4 flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Escribe con confianza..." class="flex-1 bg-gray-100 rounded-2xl p-4 text-xs font-bold outline-none border-2 border-transparent focus:border-purple-300 transition-all">
-                    <button onclick="sendChat()" class="bg-purple-600 text-white h-12 w-12 rounded-2xl shadow-lg active:scale-90 transition-all">
-                        <i class="fas fa-paper-plane text-lg"></i>
-                    </button>
+                <div class="p-4 bg-gray-50 border-t flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Escribe aquí con confianza..." class="flex-1 p-3 rounded-xl border-none outline-none text-sm shadow-inner">
+                    <button onclick="sendMessage()" class="bg-violet-custom text-white w-12 h-12 rounded-xl shadow-lg"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
 
     </main>
 
-    <nav class="fixed bottom-0 w-full bg-white/80 backdrop-blur-2xl border-t border-gray-100 py-6 px-6 flex justify-between items-end z-50">
-        <button onclick="showTab('tab-inicio')" class="nav-btn flex flex-col items-center text-gray-300">
-            <i class="fas fa-home text-xl"></i><span class="text-[9px] font-black mt-2 uppercase">Inicio</span>
+    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-100 p-4 flex justify-around shadow-[0_-10px_25px_rgba(0,0,0,0.05)] z-50">
+        <button onclick="showTab('home')" class="nav-item flex flex-col items-center text-gray-300 active-nav">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-[9px] mt-1 font-bold uppercase tracking-tighter">Inicio</span>
         </button>
-        <button onclick="showTab('tab-sedes')" class="nav-btn flex flex-col items-center text-gray-300">
-            <i class="fas fa-map-marked-alt text-xl"></i><span class="text-[9px] font-black mt-2 uppercase">Sedes</span>
+        <button onclick="showTab('sedes')" class="nav-item flex flex-col items-center text-gray-300">
+            <i class="fas fa-map-marker-alt text-xl"></i>
+            <span class="text-[9px] mt-1 font-bold uppercase tracking-tighter">Sedes</span>
         </button>
-        <button onclick="showTab('tab-aprende')" class="nav-btn flex flex-col items-center text-gray-300">
-            <i class="fas fa-graduation-cap text-xl"></i><span class="text-[9px] font-black mt-2 uppercase">Aprende</span>
+        <button onclick="showTab('ia')" class="nav-item flex flex-col items-center text-gray-300">
+            <i class="fas fa-robot text-xl"></i>
+            <span class="text-[9px] mt-1 font-bold uppercase tracking-tighter">IA</span>
         </button>
-        <button onclick="showTab('tab-ia')" class="nav-btn flex flex-col items-center text-gray-300">
-            <div class="bg-gray-100 h-12 w-12 rounded-full flex items-center justify-center -mt-6 shadow-md border-4 border-white">
-                <i class="fas fa-robot text-xl"></i>
-            </div>
-            <span class="text-[9px] font-black mt-2 uppercase">Violeta IA</span>
-        </button>
-        <button onclick="window.location.href='https://www.google.com/search?q=clima+en+venezuela'" class="flex flex-col items-center text-red-400">
-            <i class="fas fa-sign-out-alt text-xl"></i><span class="text-[9px] font-black mt-2 uppercase">Salir</span>
+        <button onclick="window.location.href='https://www.google.com/search?q=clima+venezuela'" class="flex flex-col items-center text-red-400">
+            <i class="fas fa-sign-out-alt text-xl"></i>
+            <span class="text-[9px] mt-1 font-bold uppercase tracking-tighter">Salir</span>
         </button>
     </nav>
 
     <script>
-        function showTab(id) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('nav-active'));
-            event.currentTarget.classList.add('nav-active');
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active-nav'));
+            event.currentTarget.classList.add('active-nav');
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function filterSedes() {
-            const val = document.getElementById('estadoSelect').value;
-            const items = document.querySelectorAll('#listaSedes > div');
-            items.forEach(i => {
-                if(val === 'todos' || i.dataset.estado === val) i.style.display = 'block';
-                else i.style.display = 'none';
-            });
-        }
-
-        function sendChat() {
-            const input = document.getElementById('chatInput');
-            const box = document.getElementById('chatBox');
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const box = document.getElementById('chat-box');
             if(!input.value) return;
             
-            box.innerHTML += `<div class="flex justify-end"><div class="chat-bubble-user p-4 text-xs font-bold">${input.value}</div></div>`;
-            
-            const userMsg = input.value.toLowerCase();
-            input.value = '';
+            box.innerHTML += `<div class="flex justify-end"><div class="bg-violet-custom text-white p-4 rounded-2xl rounded-tr-none max-w-[80%] shadow-md">${input.value}</div></div>`;
             
             setTimeout(() => {
-                let reply = "Entiendo perfectamente cómo te sientes. Eres muy fuerte por hablar de esto. ¿Sabías que en la sección 'Sedes' hay números que pueden orientarte legalmente?";
-                if(userMsg.includes('miedo')) reply = "El miedo es natural, pero no tienes que enfrentarlo sola. ¿Te gustaría que busquemos juntas el número del centro de apoyo más cercano a ti?";
-                
-                box.innerHTML += `<div class="flex gap-2"><div class="h-8 w-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-[10px] font-black">V</div><div class="chat-bubble-ia p-4 text-xs font-medium leading-relaxed italic">${reply}</div></div>`;
+                box.innerHTML += `<div class="flex items-start gap-2"><div class="bg-purple-100 text-purple-700 p-4 rounded-2xl rounded-tl-none max-w-[80%] italic font-bold">Estoy aquí contigo. No temas dar el primer paso. ¿Sabías que puedes unirte a nuestro grupo de apoyo desde la pantalla principal? Allí hay muchas mujeres listas para escucharte.</div></div>`;
                 box.scrollTop = box.scrollHeight;
             }, 1000);
+            
+            input.value = '';
+            box.scrollTop = box.scrollHeight;
         }
     </script>
 </body>
-                                                     </html>
-
-        
+                        </html>
+                        
